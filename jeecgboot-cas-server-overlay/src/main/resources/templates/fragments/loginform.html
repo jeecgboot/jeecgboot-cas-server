@@ -1,0 +1,66 @@
+<div class="login_box">
+      <div class="login_l_img"><img src="images/login-img.png" /></div>
+      <div class="login">
+          <div class="login_logo"><a href="#"><img src="images/login_logo.png" /></a></div>
+          <div class="login_name">
+               <p>统一认证平台</p>
+          </div>
+          <form method="post" id="fmlogin" th:object="${credential}" action="login">
+        <div style="color: #a94442;text-align:center;" th:if="${#fields.hasErrors('*')}">
+            <span th:each="err : ${#fields.errors('*')}" th:utext="${err}"/>
+        </div>
+
+        <section class="row">
+            <!-- <label for="username" th:utext="#{screen.welcome.label.netid}"/> -->
+            <div th:unless="${openIdLocalId}">
+                <input class="required" 
+                       placeholder="用户名"
+                       id="username"
+                       size="25"
+                       tabindex="1"
+                       type="text"
+                       th:disabled="${guaEnabled}"
+                       th:field="*{username}"
+                       th:accesskey="#{screen.welcome.label.netid.accesskey}"
+                       autocomplete="off"/>
+            </div>
+        </section>
+
+        <section class="row">
+            <!-- <label for="password" th:utext="#{screen.welcome.label.password}"/> -->
+            <div>
+                <input class="required"
+                       placeholder="密码"
+                       type="password"
+                       id="password"
+                       size="25"
+                       tabindex="2"
+                       th:accesskey="#{screen.welcome.label.password.accesskey}"
+                       th:field="*{password}"
+                       autocomplete="off"/>
+            </div>
+        </section>
+
+        <section>
+            <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
+            <input type="hidden" name="_eventId" value="submit"/>
+            <input type="hidden" name="geolocation"/>
+            <input class="btn btn-submit btn-block"
+                   name="submit"
+                   accesskey="l"
+                   th:value="#{screen.welcome.button.login}"
+                   tabindex="6"
+                   type="submit"/>
+        </section>
+    </form>
+      </div>
+      <div class="copyright">xxx公司 版权所有©2019-2020 技术支持xxx</div>
+      <script type="text/javascript" th:inline="javascript">
+        var i = "正在登录..."
+        $("#fmlogin").submit(function () {
+            $(":submit").attr("disabled", true);
+            $(":submit").attr("value", i);
+            return true;
+        });
+    </script>
+</div>

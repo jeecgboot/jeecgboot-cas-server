@@ -1,0 +1,26 @@
+server:
+  port: 8448
+  servlet:
+    context-path: /cas-db
+
+
+spring:
+  application:
+    name: jeecgboot-cas-db
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url:  jdbc:mysql://127.0.0.1:3306/jeecg-boot-bpm-0511?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  
+syncUser: 
+  key: 123456

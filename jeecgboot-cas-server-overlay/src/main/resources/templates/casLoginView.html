@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{cas.login.pagetitle}"></title>
+</head>
+
+<body id="cas">
+    <div layout:fragment="content">
+                <div th:replace="fragments/loginform" />
+    </div>
+</body>
+</html>

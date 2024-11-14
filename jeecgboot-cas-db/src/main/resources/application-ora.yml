@@ -1,0 +1,22 @@
+server: 
+  port: 8448
+  servlet:
+    context-path: /cas-db
+
+spring: 
+  application:
+    name: jeecgboot-cas-db
+  datasource: 
+    url: jdbc:oracle:thin:@192.168.1.200:1521:ORCL
+    username: reuser
+    password: reuser
+    driver-class-name: oracle.jdbc.OracleDriver
+    
+mybatis: 
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  
+syncUser: 
+  key: 123456
